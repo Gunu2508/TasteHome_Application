@@ -1,0 +1,406 @@
+{
+  "info": {
+    "name": "TasteHome API",
+    "_postman_id": "tastehome-api-collection-v1",
+    "description": "Complete API documentation for the TasteHome backend. Covers all CRUD endpoints for Users, Recipes, and Reviews, plus JWT authentication.\n\n**How to use:**\n1. Run POST /api/auth/register\n2. Run POST /api/auth/login  →  token is auto-saved to {{token}}\n3. Run Create Recipe  →  recipe_id is auto-saved to {{recipe_id}}\n4. Run Create Review  →  review_id is auto-saved to {{review_id}}\n5. All other requests use those variables automatically",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://tastehome-api.onrender.com",
+      "description": "Live Render deployment URL"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "description": "Auto-filled after Login"
+    },
+    {
+      "key": "user_id",
+      "value": "",
+      "description": "Auto-filled after Login"
+    },
+    {
+      "key": "recipe_id",
+      "value": "",
+      "description": "Auto-filled after Create Recipe"
+    },
+    {
+      "key": "review_id",
+      "value": "",
+      "description": "Auto-filled after Create Review"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "description": "Public routes - no token required",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gunveer Singh\",\n  \"email\": \"gunveer@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Creates a new user. Password is hashed with bcrypt. Returns JWT token.\n\nExpected: 201 Created"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const res = pm.response.json();",
+                  "  pm.collectionVariables.set('token', res.token);",
+                  "  pm.collectionVariables.set('user_id', res.id);",
+                  "  console.log('Registered. Token auto-saved.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"gunveer@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Authenticates user and returns JWT token. Token is auto-saved to {{token}}.\n\nExpected: 200 OK"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const res = pm.response.json();",
+                  "  pm.collectionVariables.set('token', res.token);",
+                  "  pm.collectionVariables.set('user_id', res.id);",
+                  "  console.log('Logged in. Token auto-saved.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "description": "Private routes - require Authorization: Bearer {{token}}",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users"]
+            },
+            "description": "Returns all registered users (passwords excluded).\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", "{{user_id}}"]
+            },
+            "description": "Returns a single user by ID. Returns 404 if not found.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", "{{user_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Gunveer Singh Updated\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Updates the user's name or email.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/users/{{user_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "users", "{{user_id}}"]
+            },
+            "description": "Permanently deletes the user. Returns 404 if not found.\n\nExpected: 200 OK\n\n⚠️ Run this LAST — deleting the user will cascade-delete their recipes and reviews."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recipes",
+      "description": "GET routes are public. POST / PUT / DELETE require Authorization: Bearer {{token}}",
+      "item": [
+        {
+          "name": "Get All Recipes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/recipes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes"]
+            },
+            "description": "Returns all recipes with author name (JOIN with users). No auth required.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Get Recipe by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes", "{{recipe_id}}"]
+            },
+            "description": "Returns a single recipe by ID. Returns 404 if not found.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Create Recipe",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/recipes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Butter Chicken\",\n  \"description\": \"A classic creamy North Indian curry\",\n  \"ingredients\": \"500g chicken, 2 tbsp butter, 1 cup tomato puree, 1 cup cream, garam masala, salt\",\n  \"instructions\": \"1. Marinate chicken in yogurt and spices. 2. Cook chicken in butter. 3. Add tomato puree and simmer. 4. Stir in cream.\",\n  \"category\": \"Dinner\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Creates a new recipe linked to the authenticated user.\n\nExpected: 201 Created"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const res = pm.response.json();",
+                  "  pm.collectionVariables.set('recipe_id', res.id);",
+                  "  console.log('Recipe created. recipe_id auto-saved:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update Recipe",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes", "{{recipe_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Butter Chicken (Updated)\",\n  \"category\": \"Main Course\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Updates a recipe. Only the owner can update. Returns 403 if unauthorized.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Delete Recipe",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/recipes/{{recipe_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes", "{{recipe_id}}"]
+            },
+            "description": "Deletes a recipe. Only the owner can delete. Cascades to delete all reviews for this recipe.\n\nExpected: 200 OK\n\n⚠️ Run this AFTER testing reviews."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "description": "GET routes are public. POST (via recipe route) / PUT / DELETE require Authorization: Bearer {{token}}",
+      "item": [
+        {
+          "name": "Get All Reviews",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews"]
+            },
+            "description": "Returns all reviews across all recipes, joined with reviewer name and recipe title.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Get Review by ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/reviews/{{review_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "{{review_id}}"]
+            },
+            "description": "Returns a single review by ID. Returns 404 if not found.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Get Reviews for a Recipe",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/recipes/{{recipe_id}}/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes", "{{recipe_id}}", "reviews"]
+            },
+            "description": "Returns all reviews for a specific recipe. Demonstrates the One-to-Many FK relationship.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Create Review for a Recipe",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/recipes/{{recipe_id}}/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "recipes", "{{recipe_id}}", "reviews"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"comment\": \"Absolutely delicious! Made this for family dinner and everyone loved it.\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Creates a review for a recipe. Rating must be 1-5. Linked to the authenticated user.\n\nExpected: 201 Created"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const res = pm.response.json();",
+                  "  pm.collectionVariables.set('review_id', res.id);",
+                  "  console.log('Review created. review_id auto-saved:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Update Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/reviews/{{review_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "{{review_id}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Great recipe, slightly adjusted the spices to my taste.\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Updates a review. Only the review author can update. Returns 403 if unauthorized.\n\nExpected: 200 OK"
+          }
+        },
+        {
+          "name": "Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/reviews/{{review_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews", "{{review_id}}"]
+            },
+            "description": "Deletes a review. Only the review author can delete. Returns 403 if unauthorized.\n\nExpected: 200 OK"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Root",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Verifies the API is running.\n\nExpected: 200 OK\nResponse: { \"message\": \"TasteHome API is running\" }"
+          }
+        }
+      ]
+    }
+  ]
+}
