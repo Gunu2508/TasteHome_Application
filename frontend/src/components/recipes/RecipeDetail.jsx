@@ -32,10 +32,16 @@ export default function RecipeDetail({
       </div>
 
       {/* Hero band */}
-      <div style={{ ...s.heroBand, background: `linear-gradient(135deg, ${color} 0%, ${color}BB 100%)` }}>
+      <div style={{
+        ...s.heroBand,
+        background: `linear-gradient(135deg, ${color}25 0%, #0C0C10 60%)`,
+        borderBottom: `1px solid ${color}30`,
+      }}>
         <div style={s.heroInner}>
           <div style={s.heroLeft}>
-            <span style={s.catPill}>{recipe.category}</span>
+            <span style={{ ...s.catPill, backgroundColor: `${color}22`, border: `1px solid ${color}55`, color: '#E8E8EF' }}>
+              {recipe.category}
+            </span>
             <h1 style={s.title}>{recipe.title}</h1>
             <p style={s.description}>{recipe.description}</p>
             <div style={s.heroMeta}>
@@ -64,7 +70,7 @@ export default function RecipeDetail({
           </div>
 
           {/* Initial block */}
-          <div style={s.initialBlock}>
+          <div style={{ ...s.initialBlock, backgroundColor: `${color}20`, border: `1px solid ${color}40` }}>
             <span style={s.initialLetter}>{recipe.title.charAt(0)}</span>
           </div>
         </div>
@@ -187,7 +193,7 @@ const s = {
     border: 'none',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: '#6E6E6E',
+    color: '#9090A4',
     cursor: 'pointer',
     padding: '6px 0',
     transition: 'color 0.2s ease',
@@ -206,16 +212,13 @@ const s = {
   },
   heroLeft: {
     flex: 1,
-    color: '#fff',
   },
   catPill: {
     display: 'inline-block',
     padding: '4px 12px',
-    backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: '999px',
     fontSize: '0.74rem',
     fontWeight: '600',
-    color: '#fff',
     textTransform: 'uppercase',
     letterSpacing: '0.07em',
     marginBottom: '14px',
@@ -226,11 +229,11 @@ const s = {
     fontWeight: '700',
     lineHeight: 1.15,
     margin: '0 0 14px 0',
-    color: '#fff',
+    color: '#E8E8EF',
   },
   description: {
     fontSize: '1rem',
-    color: 'rgba(255,255,255,0.82)',
+    color: '#9090A4',
     lineHeight: 1.7,
     margin: '0 0 24px 0',
     maxWidth: '480px',
@@ -246,7 +249,7 @@ const s = {
     alignItems: 'center',
     gap: '5px',
     fontSize: '0.85rem',
-    color: 'rgba(255,255,255,0.85)',
+    color: '#9090A4',
     fontWeight: '500',
   },
   ratingRow: {
@@ -257,16 +260,15 @@ const s = {
   ratingNum: {
     fontSize: '0.9rem',
     fontWeight: '700',
-    color: '#fff',
+    color: '#E8E8EF',
   },
   reviewCountBadge: {
     fontSize: '0.78rem',
-    color: 'rgba(255,255,255,0.7)',
+    color: '#505060',
   },
   initialBlock: {
     width: '110px',
     height: '110px',
-    backgroundColor: 'rgba(255,255,255,0.15)',
     backdropFilter: 'blur(4px)',
     borderRadius: '20px',
     display: 'flex',
@@ -278,12 +280,12 @@ const s = {
     fontSize: '3.5rem',
     fontWeight: '800',
     fontFamily: "Georgia, serif",
-    color: 'rgba(255,255,255,0.9)',
+    color: 'rgba(255,255,255,0.85)',
     lineHeight: 1,
   },
   ownerBar: {
-    backgroundColor: '#FAF7F0',
-    borderBottom: '1px solid #E4DAD0',
+    backgroundColor: '#0E0E13',
+    borderBottom: '1px solid #252530',
   },
   ownerBarInner: {
     maxWidth: '1200px',
@@ -297,7 +299,7 @@ const s = {
   },
   ownerLabel: {
     fontSize: '0.82rem',
-    color: '#6E6E6E',
+    color: '#505060',
     fontStyle: 'italic',
   },
   ownerBtns: {
@@ -310,12 +312,12 @@ const s = {
     alignItems: 'center',
     gap: '5px',
     padding: '7px 14px',
-    backgroundColor: '#1B4D5C',
-    color: '#fff',
+    backgroundColor: '#22D3EE',
+    color: '#0C0C10',
     border: 'none',
     borderRadius: '7px',
     fontSize: '0.82rem',
-    fontWeight: '600',
+    fontWeight: '700',
     cursor: 'pointer',
   },
   deleteBtn: {
@@ -323,9 +325,9 @@ const s = {
     alignItems: 'center',
     gap: '5px',
     padding: '7px 14px',
-    backgroundColor: '#fff',
-    color: '#C94B2C',
-    border: '1.5px solid #C94B2C',
+    backgroundColor: 'transparent',
+    color: '#FF5C2B',
+    border: '1.5px solid #FF5C2B',
     borderRadius: '7px',
     fontSize: '0.82rem',
     fontWeight: '600',
@@ -338,12 +340,12 @@ const s = {
   },
   confirmText: {
     fontSize: '0.82rem',
-    color: '#C94B2C',
+    color: '#FF5C2B',
     fontWeight: '500',
   },
   confirmYes: {
     padding: '6px 12px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '6px',
@@ -354,10 +356,10 @@ const s = {
   confirmNo: {
     padding: '6px 12px',
     background: 'none',
-    border: '1px solid #E4DAD0',
+    border: '1px solid #252530',
     borderRadius: '6px',
     fontSize: '0.8rem',
-    color: '#6E6E6E',
+    color: '#9090A4',
     cursor: 'pointer',
   },
   body: {
@@ -390,14 +392,14 @@ const s = {
     fontSize: '1.2rem',
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     margin: 0,
     paddingBottom: '12px',
-    borderBottom: '2px solid #F0EAE0',
+    borderBottom: '2px solid #252530',
   },
   reviewBadge: {
-    backgroundColor: '#FAE9E4',
-    color: '#C94B2C',
+    backgroundColor: 'rgba(255,92,43,0.15)',
+    color: '#FF5C2B',
     borderRadius: '999px',
     padding: '2px 8px',
     fontSize: '0.78rem',
@@ -414,14 +416,14 @@ const s = {
     alignItems: 'flex-start',
     gap: '10px',
     fontSize: '0.95rem',
-    color: '#2A2A2A',
+    color: '#C8C8D0',
     lineHeight: 1.5,
   },
   ingredientBullet: {
     width: '6px',
     height: '6px',
     borderRadius: '50%',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     flexShrink: 0,
     marginTop: '8px',
   },
@@ -440,7 +442,7 @@ const s = {
     width: '28px',
     height: '28px',
     borderRadius: '50%',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     display: 'flex',
     alignItems: 'center',
@@ -452,7 +454,7 @@ const s = {
   },
   stepText: {
     fontSize: '0.95rem',
-    color: '#2A2A2A',
+    color: '#C8C8D0',
     lineHeight: 1.65,
     flex: 1,
   },

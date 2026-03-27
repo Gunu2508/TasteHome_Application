@@ -96,7 +96,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
                 onChange={(e) => handleChange('title', e.target.value)}
                 onBlur={() => handleBlur('title')}
                 placeholder="e.g. Spiced Lamb Kofta"
-                style={{ ...s.input, borderColor: errors.title ? '#C94B2C' : '#E4DAD0' }}
+                style={{ ...s.input, borderColor: errors.title ? '#FF5C2B' : '#252530' }}
                 maxLength={150}
               />
             </Field>
@@ -106,7 +106,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
                 value={form.category}
                 onChange={(e) => handleChange('category', e.target.value)}
                 onBlur={() => handleBlur('category')}
-                style={{ ...s.select, borderColor: errors.category ? '#C94B2C' : '#E4DAD0' }}
+                style={{ ...s.select, borderColor: errors.category ? '#FF5C2B' : '#252530' }}
               >
                 <option value="">Select a category…</option>
                 {namedCategories.map((cat) => (
@@ -130,7 +130,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
               onBlur={() => handleBlur('description')}
               placeholder="A warm, creamy bowl of…"
               rows={2}
-              style={{ ...s.textarea, borderColor: errors.description ? '#C94B2C' : '#E4DAD0' }}
+              style={{ ...s.textarea, borderColor: errors.description ? '#FF5C2B' : '#252530' }}
               maxLength={300}
             />
           </Field>
@@ -149,7 +149,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
               onBlur={() => handleBlur('ingredients')}
               placeholder={`500g ground lamb\n3 garlic cloves\n1 tsp cumin`}
               rows={7}
-              style={{ ...s.textarea, fontFamily: 'monospace', borderColor: errors.ingredients ? '#C94B2C' : '#E4DAD0' }}
+              style={{ ...s.textarea, fontFamily: 'monospace', borderColor: errors.ingredients ? '#FF5C2B' : '#252530' }}
             />
           </Field>
 
@@ -167,7 +167,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
               onBlur={() => handleBlur('instructions')}
               placeholder={`1. Combine all ingredients in a bowl.\n2. Shape into patties.\n3. Grill for 4 minutes per side.`}
               rows={8}
-              style={{ ...s.textarea, borderColor: errors.instructions ? '#C94B2C' : '#E4DAD0' }}
+              style={{ ...s.textarea, borderColor: errors.instructions ? '#FF5C2B' : '#252530' }}
             />
           </Field>
 
@@ -191,7 +191,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
 
 const s = {
   page: {
-    backgroundColor: '#F8F4EE',
+    backgroundColor: '#0C0C10',
     minHeight: '100vh',
     padding: '40px 24px 80px',
   },
@@ -210,7 +210,7 @@ const s = {
     border: 'none',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: '#6E6E6E',
+    color: '#9090A4',
     cursor: 'pointer',
     padding: '6px 0',
     marginBottom: '20px',
@@ -219,18 +219,18 @@ const s = {
     fontSize: '2rem',
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     margin: '0 0 8px 0',
   },
   subheading: {
     fontSize: '0.9rem',
-    color: '#6E6E6E',
+    color: '#505060',
     margin: 0,
   },
   form: {
-    backgroundColor: '#fff',
+    backgroundColor: '#141419',
     borderRadius: '16px',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #252530',
     padding: '32px',
     display: 'flex',
     flexDirection: 'column',
@@ -250,58 +250,58 @@ const s = {
   label: {
     fontSize: '0.82rem',
     fontWeight: '700',
-    color: '#3A3A3A',
+    color: '#9090A4',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
   },
   required: {
-    color: '#C94B2C',
+    color: '#FF5C2B',
   },
   hint: {
     fontSize: '0.78rem',
-    color: '#9E9080',
+    color: '#505060',
     margin: 0,
     lineHeight: 1.5,
   },
   input: {
     padding: '11px 14px',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #252530',
     borderRadius: '8px',
     fontSize: '0.925rem',
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     outline: 'none',
     transition: 'border-color 0.2s ease',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#1C1C24',
   },
   select: {
     padding: '11px 14px',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #252530',
     borderRadius: '8px',
     fontSize: '0.925rem',
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     outline: 'none',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: '#1C1C24',
     appearance: 'auto',
   },
   textarea: {
     padding: '11px 14px',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #252530',
     borderRadius: '8px',
     fontSize: '0.9rem',
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     resize: 'vertical',
     outline: 'none',
     lineHeight: 1.65,
     transition: 'border-color 0.2s ease',
     width: '100%',
     fontFamily: 'inherit',
-    backgroundColor: '#fff',
+    backgroundColor: '#1C1C24',
   },
   fieldError: {
     fontSize: '0.78rem',
-    color: '#C94B2C',
+    color: '#FF5C2B',
     margin: 0,
     display: 'flex',
     alignItems: 'center',
@@ -312,16 +312,16 @@ const s = {
     justifyContent: 'flex-end',
     gap: '12px',
     paddingTop: '8px',
-    borderTop: '1px solid #F0EAE0',
+    borderTop: '1px solid #252530',
   },
   cancelBtn: {
     padding: '11px 22px',
     background: 'none',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #33333F',
     borderRadius: '9px',
     fontSize: '0.925rem',
     fontWeight: '500',
-    color: '#6E6E6E',
+    color: '#9090A4',
     cursor: 'pointer',
   },
   submitBtn: {
@@ -329,7 +329,7 @@ const s = {
     alignItems: 'center',
     gap: '8px',
     padding: '11px 24px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '9px',

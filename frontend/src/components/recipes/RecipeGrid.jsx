@@ -81,7 +81,7 @@ const s = {
   },
   resultCount: {
     fontSize: '0.85rem',
-    color: '#6E6E6E',
+    color: '#505060',
   },
   grid: {
     display: 'grid',
@@ -99,18 +99,18 @@ const s = {
   emptyIcon: {
     fontSize: '3rem',
     lineHeight: 1,
-    opacity: 0.5,
+    opacity: 0.3,
   },
   emptyTitle: {
     fontSize: '1.2rem',
     fontWeight: '600',
     fontFamily: "Georgia, serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     margin: 0,
   },
   emptyText: {
     fontSize: '0.9rem',
-    color: '#6E6E6E',
+    color: '#505060',
     maxWidth: '320px',
     lineHeight: 1.6,
     margin: 0,

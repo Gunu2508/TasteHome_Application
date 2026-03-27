@@ -12,9 +12,9 @@ export default function Header({ user, currentView, onNavigate, onLogout }) {
         onClick={() => { onNavigate(view); setMenuOpen(false); }}
         style={{
           ...s.navLink,
-          color: active ? '#C94B2C' : '#1A1A1A',
+          color: active ? '#FF5C2B' : '#9090A4',
           fontWeight: active ? '600' : '500',
-          borderBottom: active ? '2px solid #C94B2C' : '2px solid transparent',
+          borderBottom: active ? '2px solid #FF5C2B' : '2px solid transparent',
         }}
       >
         {label}
@@ -44,10 +44,7 @@ export default function Header({ user, currentView, onNavigate, onLogout }) {
         <div style={s.authArea}>
           {user ? (
             <>
-              <button
-                style={s.addBtn}
-                onClick={() => onNavigate('add')}
-              >
+              <button style={s.addBtn} onClick={() => onNavigate('add')}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="16" height="16">
                   <path d="M12 5v14M5 12h14" />
                 </svg>
@@ -102,10 +99,10 @@ const s = {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    backgroundColor: 'rgba(248, 244, 238, 0.96)',
-    backdropFilter: 'blur(8px)',
-    borderBottom: '1px solid #E4DAD0',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+    backgroundColor: 'rgba(12, 12, 16, 0.92)',
+    backdropFilter: 'blur(12px)',
+    borderBottom: '1px solid #252530',
+    boxShadow: '0 1px 0 rgba(255,255,255,0.03)',
   },
   inner: {
     maxWidth: '1200px',
@@ -129,20 +126,19 @@ const s = {
   brandIcon: {
     width: '26px',
     height: '26px',
-    color: '#C94B2C',
+    color: '#FF5C2B',
   },
   brandName: {
     fontSize: '1.2rem',
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     letterSpacing: '-0.02em',
   },
   desktopNav: {
     display: 'flex',
     gap: '4px',
     flex: 1,
-    '@media (max-width: 640px)': { display: 'none' },
   },
   navLink: {
     background: 'none',
@@ -165,7 +161,7 @@ const s = {
     alignItems: 'center',
     gap: '6px',
     padding: '8px 14px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '8px',
@@ -178,12 +174,12 @@ const s = {
     width: '34px',
     height: '34px',
     borderRadius: '50%',
-    backgroundColor: '#1B4D5C',
-    color: '#fff',
+    backgroundColor: '#22D3EE',
+    color: '#0C0C10',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    fontWeight: '700',
+    fontWeight: '800',
     fontSize: '0.875rem',
     cursor: 'default',
     flexShrink: 0,
@@ -191,17 +187,17 @@ const s = {
   loginBtn: {
     padding: '7px 14px',
     background: 'none',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #33333F',
     borderRadius: '8px',
     fontSize: '0.875rem',
     fontWeight: '500',
     cursor: 'pointer',
-    color: '#1A1A1A',
-    transition: 'border-color 0.2s ease',
+    color: '#9090A4',
+    transition: 'border-color 0.2s ease, color 0.2s ease',
   },
   registerBtn: {
     padding: '7px 14px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '8px',
@@ -215,7 +211,7 @@ const s = {
     background: 'none',
     border: 'none',
     fontSize: '0.82rem',
-    color: '#6E6E6E',
+    color: '#505060',
     cursor: 'pointer',
     transition: 'color 0.2s ease',
   },
@@ -232,17 +228,17 @@ const s = {
     display: 'block',
     width: '22px',
     height: '2px',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#9090A4',
     borderRadius: '2px',
     transition: 'transform 0.2s ease, opacity 0.2s ease',
   },
   mobileNav: {
-    borderTop: '1px solid #E4DAD0',
+    borderTop: '1px solid #252530',
     padding: '12px 24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '4px',
-    backgroundColor: '#F8F4EE',
+    backgroundColor: '#0C0C10',
   },
   mobileLink: {
     background: 'none',
@@ -251,7 +247,7 @@ const s = {
     padding: '10px 0',
     fontSize: '1rem',
     cursor: 'pointer',
-    color: '#1A1A1A',
-    borderBottom: '1px solid #F0EAE0',
+    color: '#9090A4',
+    borderBottom: '1px solid #1C1C24',
   },
 };

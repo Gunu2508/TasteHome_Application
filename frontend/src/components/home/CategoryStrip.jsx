@@ -30,12 +30,12 @@ export default function CategoryStrip({ categories, activeCategory, onSelect }) 
                 style={{
                   ...s.card,
                   background: active
-                    ? `linear-gradient(135deg, ${color} 0%, ${color}CC 100%)`
-                    : '#fff',
+                    ? `linear-gradient(135deg, ${color}30 0%, ${color}18 100%)`
+                    : '#141419',
                   boxShadow: active
-                    ? `0 4px 16px ${color}55`
-                    : '0 1px 4px rgba(0,0,0,0.06)',
-                  border: active ? `1.5px solid ${color}` : '1.5px solid #E4DAD0',
+                    ? `0 4px 20px ${color}30, inset 0 0 0 1px ${color}50`
+                    : '0 1px 4px rgba(0,0,0,0.4)',
+                  border: active ? `1.5px solid ${color}60` : '1.5px solid #252530',
                   transform: active ? 'translateY(-3px)' : 'translateY(0)',
                 }}
               >
@@ -43,13 +43,13 @@ export default function CategoryStrip({ categories, activeCategory, onSelect }) 
                 <span
                   style={{
                     ...s.label,
-                    color: active ? '#fff' : '#1A1A1A',
+                    color: active ? '#E8E8EF' : '#9090A4',
                     fontWeight: active ? '600' : '500',
                   }}
                 >
                   {cat}
                 </span>
-                {active && <div style={{ ...s.activeDot, backgroundColor: 'rgba(255,255,255,0.6)' }} />}
+                {active && <div style={{ ...s.activeDot, backgroundColor: CATEGORY_COLORS[cat] || '#FF5C2B' }} />}
               </button>
             );
           })}
@@ -61,9 +61,9 @@ export default function CategoryStrip({ categories, activeCategory, onSelect }) 
 
 const s = {
   section: {
-    backgroundColor: '#F0EAE0',
-    borderTop: '1px solid #E4DAD0',
-    borderBottom: '1px solid #E4DAD0',
+    backgroundColor: '#0E0E13',
+    borderTop: '1px solid #252530',
+    borderBottom: '1px solid #252530',
     padding: '40px 0',
   },
   inner: {
@@ -76,7 +76,7 @@ const s = {
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
     marginBottom: '20px',
-    color: '#1A1A1A',
+    color: '#E8E8EF',
   },
   track: {
     display: 'flex',

@@ -28,8 +28,8 @@ export default function Footer() {
 
 const s = {
   footer: {
-    borderTop: '1px solid #E4DAD0',
-    backgroundColor: '#F0EAE0',
+    borderTop: '1px solid #252530',
+    backgroundColor: '#0C0C10',
     marginTop: 'auto',
   },
   inner: {
@@ -49,17 +49,17 @@ const s = {
   icon: {
     width: '22px',
     height: '22px',
-    color: '#C94B2C',
+    color: '#FF5C2B',
   },
   name: {
     fontSize: '1.1rem',
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
   },
   tagline: {
     fontSize: '0.875rem',
-    color: '#6E6E6E',
+    color: '#505060',
     fontStyle: 'italic',
     fontFamily: "Georgia, 'Times New Roman', serif",
   },
@@ -70,17 +70,17 @@ const s = {
   },
   link: {
     fontSize: '0.82rem',
-    color: '#6E6E6E',
+    color: '#505060',
     cursor: 'pointer',
     transition: 'color 0.2s',
   },
   sep: {
-    color: '#C9BFB4',
+    color: '#252530',
     fontSize: '0.8rem',
   },
   copy: {
     fontSize: '0.78rem',
-    color: '#9E9080',
+    color: '#33333F',
     marginTop: '4px',
   },
 };

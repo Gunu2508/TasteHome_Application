@@ -11,11 +11,11 @@ export default function RecipeCard({ recipe, onSelect }) {
       onClick={() => onSelect(recipe)}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-3px)';
-        e.currentTarget.style.boxShadow = '0 8px 28px rgba(0,0,0,0.12)';
+        e.currentTarget.style.boxShadow = `0 8px 32px rgba(0,0,0,0.5), inset 0 0 0 1px #33333F`;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.06)';
+        e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.4)';
       }}
       role="button"
       tabIndex={0}
@@ -72,10 +72,10 @@ const s = {
   card: {
     display: 'flex',
     alignItems: 'stretch',
-    backgroundColor: '#fff',
+    backgroundColor: '#141419',
     borderRadius: '14px',
-    border: '1.5px solid #E4DAD0',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+    border: '1.5px solid #252530',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
     overflow: 'hidden',
     cursor: 'pointer',
     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
@@ -100,7 +100,7 @@ const s = {
   catLabel: {
     fontSize: '0.65rem',
     fontWeight: '600',
-    color: 'rgba(255,255,255,0.8)',
+    color: 'rgba(255,255,255,0.75)',
     textTransform: 'uppercase',
     letterSpacing: '0.07em',
     textAlign: 'center',
@@ -123,13 +123,13 @@ const s = {
     fontSize: '1.05rem',
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     margin: 0,
     lineHeight: 1.3,
   },
   desc: {
     fontSize: '0.85rem',
-    color: '#6E6E6E',
+    color: '#9090A4',
     lineHeight: 1.55,
     margin: 0,
     display: '-webkit-box',
@@ -154,12 +154,12 @@ const s = {
     alignItems: 'center',
     gap: '4px',
     fontSize: '0.78rem',
-    color: '#6E6E6E',
+    color: '#9090A4',
     fontWeight: '500',
   },
   date: {
     fontSize: '0.74rem',
-    color: '#9E9080',
+    color: '#505060',
   },
   ratingWrap: {
     display: 'flex',
@@ -169,17 +169,17 @@ const s = {
   ratingText: {
     fontSize: '0.82rem',
     fontWeight: '600',
-    color: '#C94B2C',
+    color: '#FF5C2B',
   },
   reviewCount: {
     fontSize: '0.75rem',
-    color: '#9E9080',
+    color: '#505060',
   },
   arrow: {
     display: 'flex',
     alignItems: 'center',
     paddingRight: '16px',
-    color: '#C9BFB4',
+    color: '#33333F',
     flexShrink: 0,
   },
 };

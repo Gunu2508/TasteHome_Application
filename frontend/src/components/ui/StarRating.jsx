@@ -23,8 +23,8 @@ export default function StarRating({ value = 0, onChange, size = 16 }) {
             width={size}
             height={size}
             viewBox="0 0 24 24"
-            fill={filled ? '#C94B2C' : half ? 'url(#half)' : 'none'}
-            stroke={filled || half ? '#C94B2C' : '#C9BFB4'}
+            fill={filled ? '#FF5C2B' : half ? 'url(#half)' : 'none'}
+            stroke={filled || half ? '#FF5C2B' : '#33333F'}
             strokeWidth="1.8"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -40,7 +40,7 @@ export default function StarRating({ value = 0, onChange, size = 16 }) {
           >
             <defs>
               <linearGradient id="half" x1="0" x2="1" y1="0" y2="0">
-                <stop offset="50%" stopColor="#C94B2C" />
+                <stop offset="50%" stopColor="#FF5C2B" />
                 <stop offset="50%" stopColor="none" stopOpacity="0" />
               </linearGradient>
             </defs>

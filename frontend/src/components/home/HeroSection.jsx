@@ -7,6 +7,10 @@ export default function HeroSection({ onExplore, onAddRecipe }) {
 
   return (
     <section style={s.hero}>
+      {/* Ambient glow blobs */}
+      <div style={s.glowOrange} />
+      <div style={s.glowCyan} />
+
       <div style={s.inner}>
         {/* Left: text */}
         <div style={s.left} className="animate-up">
@@ -72,7 +76,7 @@ export default function HeroSection({ onExplore, onAddRecipe }) {
 
       {/* Bottom wave separator */}
       <svg style={s.wave} viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F8F4EE" />
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#0C0C10" />
       </svg>
     </section>
   );
@@ -81,18 +85,38 @@ export default function HeroSection({ onExplore, onAddRecipe }) {
 function Stat({ value, label }) {
   return (
     <div style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: '1.4rem', fontWeight: '700', color: '#C94B2C', fontFamily: "Georgia, serif" }}>{value}</div>
-      <div style={{ fontSize: '0.76rem', color: '#6E6E6E', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
+      <div style={{ fontSize: '1.4rem', fontWeight: '700', color: '#FF5C2B', fontFamily: "Georgia, serif" }}>{value}</div>
+      <div style={{ fontSize: '0.76rem', color: '#505060', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
     </div>
   );
 }
 
 const s = {
   hero: {
-    background: 'linear-gradient(145deg, #1B4D5C 0%, #0F3040 100%)',
+    background: 'linear-gradient(135deg, #120B06 0%, #0C0C10 55%, #08101A 100%)',
     position: 'relative',
     overflow: 'hidden',
     paddingBottom: '20px',
+  },
+  glowOrange: {
+    position: 'absolute',
+    top: '-80px',
+    left: '-60px',
+    width: '420px',
+    height: '420px',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(255,92,43,0.12) 0%, transparent 70%)',
+    pointerEvents: 'none',
+  },
+  glowCyan: {
+    position: 'absolute',
+    bottom: '40px',
+    right: '10%',
+    width: '360px',
+    height: '360px',
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(34,211,238,0.07) 0%, transparent 70%)',
+    pointerEvents: 'none',
   },
   inner: {
     maxWidth: '1200px',
@@ -102,19 +126,21 @@ const s = {
     gridTemplateColumns: '1fr 1fr',
     gap: '60px',
     alignItems: 'center',
+    position: 'relative',
+    zIndex: 1,
   },
   left: {
-    color: '#fff',
+    color: '#E8E8EF',
   },
   badge: {
     display: 'inline-block',
     padding: '5px 14px',
-    backgroundColor: 'rgba(201, 75, 44, 0.25)',
-    border: '1px solid rgba(201, 75, 44, 0.4)',
+    backgroundColor: 'rgba(255, 92, 43, 0.12)',
+    border: '1px solid rgba(255, 92, 43, 0.3)',
     borderRadius: '999px',
     fontSize: '0.78rem',
     fontWeight: '600',
-    color: '#FFBFB0',
+    color: '#FF8A65',
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
     marginBottom: '20px',
@@ -125,15 +151,15 @@ const s = {
     fontWeight: '700',
     lineHeight: 1.1,
     marginBottom: '24px',
-    color: '#fff',
+    color: '#E8E8EF',
   },
   headingAccent: {
-    color: '#F4A27A',
+    color: '#FF5C2B',
     fontStyle: 'italic',
   },
   sub: {
     fontSize: '1.0rem',
-    color: 'rgba(255,255,255,0.75)',
+    color: '#9090A4',
     lineHeight: 1.75,
     marginBottom: '36px',
     maxWidth: '420px',
@@ -149,7 +175,7 @@ const s = {
     alignItems: 'center',
     gap: '8px',
     padding: '13px 26px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '10px',
@@ -157,12 +183,13 @@ const s = {
     fontWeight: '600',
     cursor: 'pointer',
     transition: 'background-color 0.2s ease, transform 0.15s ease',
+    boxShadow: '0 0 20px rgba(255,92,43,0.3)',
   },
   ctaSecondary: {
     padding: '13px 26px',
     backgroundColor: 'transparent',
-    color: '#fff',
-    border: '1.5px solid rgba(255,255,255,0.35)',
+    color: '#E8E8EF',
+    border: '1.5px solid #33333F',
     borderRadius: '10px',
     fontSize: '0.95rem',
     fontWeight: '500',
@@ -177,7 +204,7 @@ const s = {
   statDivider: {
     width: '1px',
     height: '28px',
-    backgroundColor: 'rgba(255,255,255,0.15)',
+    backgroundColor: '#252530',
   },
   right: {
     display: 'flex',
@@ -201,7 +228,8 @@ const s = {
     minHeight: '140px',
     cursor: 'default',
     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+    boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+    border: '1px solid rgba(255,255,255,0.06)',
   },
   tileInitial: {
     fontSize: '2.2rem',
@@ -227,7 +255,7 @@ const s = {
   },
   tileCat: {
     fontSize: '0.72rem',
-    color: 'rgba(255,255,255,0.7)',
+    color: 'rgba(255,255,255,0.65)',
     fontWeight: '500',
     textTransform: 'uppercase',
     letterSpacing: '0.06em',
@@ -236,7 +264,7 @@ const s = {
     position: 'absolute',
     width: '320px',
     height: '320px',
-    border: '1px solid rgba(255,255,255,0.06)',
+    border: '1px solid rgba(255,92,43,0.08)',
     borderRadius: '50%',
     top: '50%',
     left: '50%',

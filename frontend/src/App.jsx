@@ -268,7 +268,8 @@ export default function App() {
         <div
           style={{
             ...styles.toast,
-            backgroundColor: toast.type === 'info' ? '#1B3A5C' : '#1B4D3E',
+            backgroundColor: toast.type === 'info' ? '#0E2A38' : '#0E2818',
+            borderColor: toast.type === 'info' ? '#22D3EE' : '#22C55E',
           }}
           className="animate-fade"
           role="alert"
@@ -304,9 +305,9 @@ const styles = {
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#F8F4EE',
+    backgroundColor: '#0C0C10',
     fontFamily: "'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
   },
   main: {
     flex: 1,
@@ -327,12 +328,12 @@ const styles = {
     fontWeight: '700',
     fontFamily: "Georgia, 'Times New Roman', serif",
     margin: 0,
-    color: '#1A1A1A',
+    color: '#E8E8EF',
   },
   seeAll: {
     background: 'none',
     border: 'none',
-    color: '#C94B2C',
+    color: '#FF5C2B',
     fontSize: '0.9rem',
     fontWeight: '600',
     cursor: 'pointer',
@@ -348,10 +349,11 @@ const styles = {
     gap: '10px',
     padding: '13px 20px',
     borderRadius: '10px',
-    color: '#fff',
+    border: '1px solid',
+    color: '#E8E8EF',
     fontSize: '0.9rem',
     fontWeight: '500',
-    boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
+    boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
     animation: 'toastIn 0.3s ease both',
     maxWidth: '340px',
   },

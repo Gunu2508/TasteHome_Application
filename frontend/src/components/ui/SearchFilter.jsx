@@ -35,16 +35,16 @@ export default function SearchFilter({ searchQuery, onSearch, activeCategory, on
               onClick={() => onCategoryChange(cat)}
               style={{
                 ...s.pill,
-                backgroundColor: active ? (CATEGORY_COLORS[cat] || '#C94B2C') : 'transparent',
-                color: active ? '#fff' : '#1A1A1A',
-                borderColor: active ? (CATEGORY_COLORS[cat] || '#C94B2C') : '#E4DAD0',
+                backgroundColor: active ? (CATEGORY_COLORS[cat] || '#FF5C2B') : 'transparent',
+                color: active ? '#fff' : '#9090A4',
+                borderColor: active ? (CATEGORY_COLORS[cat] || '#FF5C2B') : '#252530',
               }}
             >
               {cat !== 'All' && (
                 <span
                   style={{
                     ...s.dot,
-                    backgroundColor: active ? 'rgba(255,255,255,0.6)' : (CATEGORY_COLORS[cat] || '#94A3B8'),
+                    backgroundColor: active ? 'rgba(255,255,255,0.6)' : (CATEGORY_COLORS[cat] || '#505060'),
                   }}
                 />
               )}
@@ -73,17 +73,17 @@ const s = {
     transform: 'translateY(-50%)',
     width: '18px',
     height: '18px',
-    color: '#6E6E6E',
+    color: '#505060',
     pointerEvents: 'none',
   },
   input: {
     width: '100%',
     padding: '11px 40px 11px 42px',
-    border: '1.5px solid #E4DAD0',
+    border: '1.5px solid #252530',
     borderRadius: '10px',
     fontSize: '0.925rem',
-    background: '#fff',
-    color: '#1A1A1A',
+    background: '#141419',
+    color: '#E8E8EF',
     transition: 'border-color 0.2s ease',
     outline: 'none',
   },
@@ -95,7 +95,7 @@ const s = {
     background: 'none',
     border: 'none',
     fontSize: '1.2rem',
-    color: '#6E6E6E',
+    color: '#505060',
     cursor: 'pointer',
     lineHeight: 1,
     padding: '0 2px',

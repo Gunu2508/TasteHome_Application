@@ -253,7 +253,7 @@ function InputField({ label, id, type, value, onChange, placeholder, error, icon
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          style={{ ...sf.input, borderColor: error ? '#C94B2C' : '#E4DAD0' }}
+          style={{ ...sf.input, borderColor: error ? '#FF5C2B' : '#252530' }}
           autoComplete={type === 'email' ? 'email' : type === 'password' ? 'current-password' : 'name'}
         />
       </div>
@@ -279,7 +279,7 @@ function PasswordField({ label, id, value, onChange, show, onToggle, error, plac
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder || 'Enter your password'}
-          style={{ ...sf.input, paddingRight: '44px', borderColor: error ? '#C94B2C' : '#E4DAD0' }}
+          style={{ ...sf.input, paddingRight: '44px', borderColor: error ? '#FF5C2B' : '#252530' }}
           autoComplete="current-password"
         />
         <button type="button" style={sf.eyeBtn} onClick={onToggle} aria-label="Toggle password visibility">
@@ -306,12 +306,12 @@ const sf = {
     fontSize: '1.5rem',
     fontWeight: '700',
     fontFamily: "Georgia, serif",
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     margin: '0 0 2px',
   },
   subtitle: {
     fontSize: '0.875rem',
-    color: '#6E6E6E',
+    color: '#505060',
     margin: '0 0 8px',
   },
   field: {
@@ -322,7 +322,7 @@ const sf = {
   label: {
     fontSize: '0.78rem',
     fontWeight: '700',
-    color: '#3A3A3A',
+    color: '#9090A4',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
   },
@@ -334,7 +334,7 @@ const sf = {
     left: '12px',
     top: '50%',
     transform: 'translateY(-50%)',
-    color: '#9E9080',
+    color: '#505060',
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
@@ -345,9 +345,9 @@ const sf = {
     border: '1.5px solid',
     borderRadius: '9px',
     fontSize: '0.925rem',
-    color: '#1A1A1A',
+    color: '#E8E8EF',
     outline: 'none',
-    backgroundColor: '#FDFCFA',
+    backgroundColor: '#1C1C24',
     transition: 'border-color 0.2s ease',
     fontFamily: 'inherit',
   },
@@ -359,19 +359,19 @@ const sf = {
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    color: '#9E9080',
+    color: '#505060',
     display: 'flex',
     alignItems: 'center',
     padding: 0,
   },
   fieldError: {
     fontSize: '0.775rem',
-    color: '#C94B2C',
+    color: '#FF5C2B',
     margin: 0,
   },
   submitBtn: {
     padding: '12px',
-    backgroundColor: '#C94B2C',
+    backgroundColor: '#FF5C2B',
     color: '#fff',
     border: 'none',
     borderRadius: '9px',
@@ -383,14 +383,14 @@ const sf = {
   },
   switchText: {
     fontSize: '0.85rem',
-    color: '#6E6E6E',
+    color: '#505060',
     textAlign: 'center',
     margin: 0,
   },
   switchLink: {
     background: 'none',
     border: 'none',
-    color: '#C94B2C',
+    color: '#FF5C2B',
     fontWeight: '600',
     fontSize: '0.85rem',
     cursor: 'pointer',
@@ -405,6 +405,7 @@ const s = {
     alignItems: 'center',
     justifyContent: 'center',
     padding: '40px 24px',
+    backgroundColor: '#0C0C10',
   },
   card: {
     width: '100%',
@@ -413,19 +414,20 @@ const s = {
     gridTemplateColumns: '1fr 1fr',
     borderRadius: '20px',
     overflow: 'hidden',
-    boxShadow: '0 8px 48px rgba(0,0,0,0.12)',
-    border: '1px solid #E4DAD0',
+    boxShadow: '0 8px 60px rgba(0,0,0,0.7)',
+    border: '1px solid #252530',
     minHeight: '560px',
   },
   brandPanel: {
-    background: 'linear-gradient(145deg, #1B4D5C 0%, #0F3040 100%)',
+    background: 'linear-gradient(145deg, #1A0C06 0%, #0C0C10 60%, #060E18 100%)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     padding: '48px 40px',
+    borderRight: '1px solid #252530',
   },
   brandContent: {
-    color: '#fff',
+    color: '#E8E8EF',
     display: 'flex',
     flexDirection: 'column',
     gap: '20px',
@@ -433,18 +435,18 @@ const s = {
   brandIcon: {
     width: '36px',
     height: '36px',
-    color: '#F4A27A',
+    color: '#FF5C2B',
   },
   brandName: {
     fontFamily: "Georgia, serif",
     fontSize: '1.8rem',
     fontWeight: '700',
-    color: '#fff',
+    color: '#E8E8EF',
     margin: 0,
   },
   brandTagline: {
     fontSize: '1rem',
-    color: 'rgba(255,255,255,0.7)',
+    color: '#505060',
     fontStyle: 'italic',
     fontFamily: "Georgia, serif",
     lineHeight: 1.6,
@@ -461,22 +463,22 @@ const s = {
     alignItems: 'center',
     gap: '10px',
     fontSize: '0.875rem',
-    color: 'rgba(255,255,255,0.85)',
+    color: '#9090A4',
   },
   featureCheck: {
     width: '20px',
     height: '20px',
-    backgroundColor: 'rgba(201, 75, 44, 0.3)',
+    backgroundColor: 'rgba(255, 92, 43, 0.18)',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '0.72rem',
-    color: '#F4A27A',
+    color: '#FF5C2B',
     flexShrink: 0,
   },
   formPanel: {
-    backgroundColor: '#fff',
+    backgroundColor: '#141419',
     padding: '40px',
     display: 'flex',
     flexDirection: 'column',
@@ -489,7 +491,7 @@ const s = {
     background: 'none',
     border: 'none',
     fontSize: '0.82rem',
-    color: '#6E6E6E',
+    color: '#505060',
     cursor: 'pointer',
     padding: 0,
     alignSelf: 'flex-start',
@@ -497,9 +499,10 @@ const s = {
   tabs: {
     display: 'flex',
     gap: '4px',
-    backgroundColor: '#F8F4EE',
+    backgroundColor: '#0C0C10',
     borderRadius: '10px',
     padding: '4px',
+    border: '1px solid #252530',
   },
   tab: {
     flex: 1,
@@ -509,14 +512,14 @@ const s = {
     borderRadius: '7px',
     fontSize: '0.875rem',
     fontWeight: '500',
-    color: '#6E6E6E',
+    color: '#505060',
     cursor: 'pointer',
     transition: 'all 0.15s ease',
   },
   tabActive: {
-    backgroundColor: '#fff',
-    color: '#1A1A1A',
+    backgroundColor: '#1C1C24',
+    color: '#E8E8EF',
     fontWeight: '600',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.4)',
   },
 };
