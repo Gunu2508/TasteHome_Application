@@ -10,6 +10,20 @@ const EMPTY_FORM = {
   instructions: '',
 };
 
+// Field wrapper - defined outside RecipeForm so it does not recreate on every keystroke
+function Field({ label, id, required, hint, error, children }) {
+  return (
+    <div style={s.fieldGroup}>
+      <label style={s.label} htmlFor={id}>
+        {label} {required && <span style={s.required}>*</span>}
+      </label>
+      {hint && <p style={s.hint}>{hint}</p>}
+      {children}
+      {error && <p style={s.fieldError}>{error}</p>}
+    </div>
+  );
+}
+
 export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
   const [form, setForm] = useState(recipe ? {
     title:        recipe.title,
@@ -59,16 +73,7 @@ export default function RecipeForm({ recipe, onSubmit, onCancel, title }) {
     onSubmit(form);
   };
 
-  const Field = ({ label, id, required, hint, error, children }) => (
-    <div style={s.fieldGroup}>
-      <label style={s.label} htmlFor={id}>
-        {label} {required && <span style={s.required}>*</span>}
-      </label>
-      {hint && <p style={s.hint}>{hint}</p>}
-      {children}
-      {error && <p style={s.fieldError}>{error}</p>}
-    </div>
-  );
+
 
   return (
     <div style={s.page}>
